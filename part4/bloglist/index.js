@@ -1,24 +1,15 @@
+// Pseudo-code for refactor:
+// 1. App, Http, Config, Logger, server, serverListen
+
+
+const app = require('./app')
 const http = require('http')
-const express = require('express')
-const app = express()
+
 const cors = require('cors')
-const mongoose = require('mongoose')
 
-const blogSchema = new mongoose.Schema({
-  title: String,
-  author: String,
-  url: String,
-  likes: Number
-})
-
-const Blog = mongoose.model('Blog', blogSchema)
-
-const mongoUrl = 'mongodb+srv://fullstack:ilovecoding123@cluster0.21jon.mongodb.net/blog?retryWrites=true&w=majority'
-mongoose.connect(mongoUrl)
-  .then(() => console.log("connected to MongoDB"))
 
 app.use(cors())
-app.use(express.json())
+
 
 app.get('/api/blogs', (request, response) => {
   Blog
