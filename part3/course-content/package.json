@@ -6,11 +6,13 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --verbose",
     "build:ui": "rm -rf build && cd ../course-content-frontend/ && npm run build --prod && cp -r build ../course-content",
     "deploy": "git push heroku HEAD:master",
     "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push && npm run deploy",
-    "logs:prod": "heroku logs --tail"
+    "logs:prod": "heroku logs --tail",
+    "lint": "eslint .",
+    "test": "NODE_ENV=test jest --verbose --runInBand"
   },
   "author": "Lei",
   "license": "ISC",
@@ -21,6 +23,11 @@
     "mongoose": "^6.0.5"
   },
   "devDependencies": {
+    "eslint": "^7.32.0",
+    "jest": "^27.1.1",
     "nodemon": "^2.0.12"
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
 }
