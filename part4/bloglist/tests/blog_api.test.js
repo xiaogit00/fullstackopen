@@ -98,6 +98,26 @@ test('always have title and url', async () => {
 
 })
 
+test('can delete', async () => {
+    const blogID = '613c3d90238f0a6238bea36b'
+    await api
+        .delete(`/api/blogs/${blogID}`)
+        .expect(204)
+
+})
+
+test('can update', async () => {
+    const blogID = '61404d7d124ad93f13bf430e'
+    const newPost = {
+        title: 'this is my post',
+        likes: 55
+    }
+    await api
+        .put(`/api/blogs/${blogID}`)
+        .send(newPost)
+        .expect(200)
+})
+
 afterAll(() => {
     mongoose.connection.close()
 })
