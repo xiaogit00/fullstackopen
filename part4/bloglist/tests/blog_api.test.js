@@ -4,13 +4,7 @@ const helper = require('./test_helper')
 const app = require('../app')
 const api = supertest(app)
 
-test('make a HTTP GET request', async () => {
-    const response = await api
-        .get('/api/blogs')
 
-    expect(response.body).toHaveLength(1)
-    // console.log(response.body)
-})
 
 test('test id', async () => {
     //I should get all the blogs right - and then what does it return in?
