@@ -3,8 +3,12 @@ const mongoose = require('mongoose')
 const helper = require('./test_helper')
 const app = require('../app')
 const api = supertest(app)
+const Blog = require('../models/blog')
 
-
+beforeEach(async () => {
+    await Blog.deleteMany({})
+    await Blog.insertMany(helper.initialBlogs)
+})
 
 test('test id', async () => {
     //I should get all the blogs right - and then what does it return in?

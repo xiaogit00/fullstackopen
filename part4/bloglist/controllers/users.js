@@ -11,11 +11,9 @@ const bcrypt = require('bcrypt')
 // I'll add a test to check if this is possible.
 
 usersRouter.get('/', async (request, response) => {
-    // How do I get all users?
-    const users = await User.find({})
-    //I cannot just response.json - because I need to findout what's the
-    // type of User.
-    console.log(users)
+
+    const users = await User.find({}).populate('blogs')
+
 
     response.json(users)
 })
