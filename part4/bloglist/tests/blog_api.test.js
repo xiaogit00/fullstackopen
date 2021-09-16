@@ -28,13 +28,8 @@ test('test id', async () => {
 
 })
 
-test('can make POST', async () => {
-    // Pseudo-code:
-    // Check for current post length
-    // create new blog
-    // send post
-    // get current length - check for it
-    // check that content contains xx
+test.only('can make POST', async () => {
+
     const initialPosts = await helper.blogsInDB()
 
     const newPost = {
@@ -46,6 +41,7 @@ test('can make POST', async () => {
 
     await api
         .post('/api/blogs')
+        .set('Authorization', 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InhpYW9naXQwMCIsImlkIjoiNjE0MmY2ZjMwZDA3MGI1OGZjYThlYWMxIiwiaWF0IjoxNjMxNzc4NjYwfQ.PTPt4OZDP6g2L4J6UvYD6sYSIRkm2rg6ViAEx3dtWuc')
         .send(newPost)
         .expect(200)
         .expect('Content-Type', /application\/json/)
