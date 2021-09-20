@@ -1,4 +1,3 @@
-import { createStore } from 'redux'
 import reducer from './anecdoteReducer'
 
 
@@ -39,6 +38,6 @@ test.only('anecdote reducer returns correct state with vote action', () => {
     const newState = reducer(initialState, voteAction)
     expect(newState[targettedNote].votes-initialState[targettedNote].votes).toBe(1)
     expect(initialState.length === newState.length).toBe(true)
-    // reducer(initialState, )
+
 
 })
