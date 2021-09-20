@@ -51,18 +51,19 @@ const reducer = (state = initialState, action) => {
             // whilst including the new item
             // 3. Return new state object
             const id = action.data.id
-            const anecdote = state.find(anecdote => anecdote.id = id)
+            const anecdote = state.find(anecdote => anecdote.id === id)
             const newAnecdote = {
                 content: anecdote.content,
                 id: anecdote.id,
                 votes: anecdote.votes + 1
             }
+
             const newAnecdotes = state.map(anecdote => (anecdote.id !== id) ? anecdote : newAnecdote)
 
             return newAnecdotes
         }
         //Alright, now, I would need a way to test this reducer to see if it works.
-        // I'll need to write some
+        // I'll need to write some conditions right
 
     default:
         return state
